@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <title>Хоёр тоог нэмэх</title>
+</head>
+<body>
+
+    <h1>Хоёр тоон дээр үйлдэл хийх</h1>
+
+    <label>1-р тоог оруулна уу:</label>
+    <input type="number" id="number1">
+
+    <br><br>
+
+    <label>2-р тоог оруулна уу:</label>
+    <input type="number" id="number2">
+
+    <br><br>
+
+    <button onclick="calculate('+')">Нэмэх (+)</button>
+    <button onclick="calculate('-')">Хасах (-)</button>
+    <button onclick="calculate('*')">Үржих (×)</button>
+    <button onclick="calculate('/')">Хуваах (÷)</button>
+
+    <h2 id="result">Хариу:</h2>
+
+    <h2>Үйлдлийн түүх:</h2>
+    <p id="history"></p>
+
+    <script>
+
+        function calculate(operation) {
+
+            let a = document.getElementById("number1").value;
+            let b = document.getElementById("number2").value;
+
+            if (a === "" || b === "") {
+                document.getElementById("result").innerHTML =
+                    "Хоёр тоогоо оруулна уу!";
+                return;
+            }
+
+            a = Number(a);
+            b = Number(b);
+
+            let answer;
+            let symbol = operation;
+
+            if (operation === '+') {
+                answer = a + b;
+            }
+            else if (operation === '-') {
+                answer = a - b;
+            }
+            else if (operation === '*') {
+                answer = a * b;
+            }
+            else if (operation === '/') {
+
+                if (b === 0) {
+                    document.getElementById("result").innerHTML =
+                        "0-д хувааж болохгүй!";
+                    return;
+                }
+
+                answer = a / b;
+            }
+
+            document.getElementById("result").innerHTML =
+                "Хариу: " + answer;
+
+            document.getElementById("history").innerHTML +=
+                a + " " + symbol + " " + b + " = " + answer + "<br>";
+
+        }
+
+    </script>
+
+</body>
+</html>
