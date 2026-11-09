@@ -41,6 +41,7 @@
             b = Number(b);
 
             let answer;
+            let symbol = operation
 
             if (operation === '+') {
                 answer = a + b;
